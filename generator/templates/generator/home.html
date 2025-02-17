@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generador de Contraseñas</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 500px;
+            backdrop-filter: blur(10px);
+        }
+        
+        h1 {
+            color: #2d3748;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #4a5568;
+            font-weight: 500;
+        }
+        
+        select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            background-color: white;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+        
+        select:focus {
+            border-color: #667eea;
+            outline: none;
+        }
+        
+        .checkbox-group {
+            background: #f7fafc;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+        
+        .checkbox-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+            accent-color: #667eea;
+        }
+        
+        button {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Generador de Contraseñas</h1>
+        <form action="{% url 'password' %}">
+            <div class="form-group">
+                <label>Longitud de la contraseña:</label>
+                <select name="length">
+                    <option value="6">6 caracteres</option>
+                    <option value="8">8 caracteres</option>
+                    <option value="10">10 caracteres</option>
+                    <option value="12" selected>12 caracteres</option>
+                    <option value="14">14 caracteres</option>
+                    <option value="16">16 caracteres</option>
+                    <option value="24">24 caracteres</option>
+                    <option value="32">32 caracteres</option>
+                    <option value="64">64 caracteres</option>
+                    <option value="128">128 caracteres</option>
+                </select>
+            </div>
+            
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" name="uppercase" id="uppercase">
+                    <label for="uppercase">Mayúsculas</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="numbers" id="numbers">
+                    <label for="numbers">Números</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" name="special" id="special">
+                    <label for="special">Caracteres especiales</label>
+                </div>
+            </div>
+            
+            <div class="form-group" style="margin-top: 1.5rem;">
+                <button type="submit">Generar Contraseña</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
